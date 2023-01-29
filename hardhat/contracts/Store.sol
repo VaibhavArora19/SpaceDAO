@@ -35,6 +35,7 @@ contract Store {
         int64 endTerm;
         int64 activated;
         int64 terminated;
+        uint size;
 
     }
 
@@ -56,7 +57,8 @@ contract Store {
         string memory _supportable,
         bool _private,
         uint256 _price,
-        uint _fundingPeriod
+        uint _fundingPeriod,
+        uint size
     ) external {
         data.push(
             metadata(
@@ -68,7 +70,8 @@ contract Store {
                 _supportable,
                 _private,
                 msg.sender,
-                _fundingPeriod
+                _fundingPeriod,
+                size
             )
         );
         dataById[id] = data[id];
@@ -129,8 +132,14 @@ contract Store {
      * @param dealId to verify the data has been uploaded or not on-chain 
      */
     function verifyClaim(uint _id, uint dealId) public view returns (bool){
-        //need to verify the claim here
-        return true;
+        require(_id < id, "Wrong data id!");
+
+        if(dealDataById[_id].size == dataById[_id].size) {
+            /**
+            * @dev send the bounty to bounty hunter here
+            */
+            return true;
+        }
     }
 
 
