@@ -109,7 +109,7 @@ const Sidebar = () => {
             <p
               className={`${
                 openMenu && "hidden"
-              } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg py-1 px-2 opacity-0 overflow-hidden group-hover:scale-110 group-hover:left-20 group-hover:duration-300 group-hover:opacity-100`}
+              } absolute left-48 bg-white font-semibold whitespace-pre w-0 text-gray-900 rounded-md drop-shadow-lg p-0  overflow-hidden group-hover:scale-110 group-hover:left-20 group-hover:duration-300 group-hover:w-fit group-hover:px-2 group-hover:py-1`}
             >
               {link.name}
             </p>
@@ -117,15 +117,15 @@ const Sidebar = () => {
         ))}
       </div>
 
-      <div className="absolute bottom-5 flex items-center gap-3 px-2 py-3 rounded-md bg-black/30 w-[87%]">
+      <div className={`absolute bottom-5 flex items-center gap-3 p-1 -ml-1 rounded-md bg-black/30  cursor-pointer ${openMenu && 'w-[87%] py-2'}`}>
         <Image
           src="/newpfp.png"
           height={40}
           width={40}
           className="rounded-md"
         />
-        <p className="text-lg">Aman Mandal</p>
-        <div>
+        <p className={`${!openMenu && "hidden"} text-lg `}>Aman Mandal</p>
+        <div className={`${!openMenu && "hidden"} ml-10`}>
           <IoExitOutline size={20} />
         </div>
       </div>
