@@ -1,3 +1,4 @@
+import HeroCard from "@/components/Cards/HeroCard";
 import Sidebar from "@/components/Sidebar";
 import Head from "next/head";
 
@@ -11,7 +12,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Sidebar />
+        {/* <Sidebar /> */}
+        <HeroCard />
+        {/* <p>Hellloooooooooooooooooooooooo</p> */}
       </main>
     </>
   );
