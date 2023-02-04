@@ -3,8 +3,8 @@ import React from "react";
 
 const HeroCard = () => {
   return (
-    <div className="flex  px-10 gap-10 mt-10 ">
-      <div className="flex w-[700px] hover:scale-105 delay-75 cursor-pointer transition ease-in-out  bg-[#B29CDB] rounded-xl px-4 py-10  justify-center items-center gap-10">
+    <div className="flex justify-around px-4 gap-6 mt-5 ">
+      <div className="flex w-[48%] hover:scale-[1.02] delay-75 cursor-pointer transition ease-in-out  bg-[#B29CDB] rounded-xl px-4 py-10  justify-center items-center gap-10">
         <div>
           <p className="text-xl font-semibold text-purple-100">
             Amazing apps, codes and musics backed by community!
@@ -13,7 +13,7 @@ const HeroCard = () => {
         </div>
         <Image src="/eg.png" width={350} height={350} />
       </div>
-      <div className="flex w-[700px] hover:scale-105 cursor-pointer delay-75 transition ease-in-out  bg-[#81C995] rounded-xl px-4 py-10  justify-center items-center gap-10">
+      <div className="flex w-[49%] hover:scale-[1.02] cursor-pointer delay-75 transition ease-in-out  bg-[#81C995] rounded-xl px-4 py-10  justify-center items-center gap-10">
         <div>
           <p className="text-xl font-semibold text-purple-100">
             Support your favourite application and get rewards

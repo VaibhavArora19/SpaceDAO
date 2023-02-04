@@ -8,7 +8,7 @@ import {
 
 const Header = () => {
   return (
-    <header className="w-full">
+    <header className="">
       <nav className="flex justify-between px-6 py-3 items-center">
         <h1 className="text-3xl font-bold text-gray-700">SpaceDAO</h1>
         <div className="flex items-center gap-6">

@@ -20,7 +20,7 @@ const links = [
   {
     name: "Games",
     icon: <FaGamepad size={20} />,
-    link: "/",
+    link: "/games",
   },
   {
     name: "Books",

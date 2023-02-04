@@ -1,4 +1,5 @@
 import HeroCard from "@/components/Cards/HeroCard";
+import Games from "@/components/Games";
 import Sidebar from "@/components/Sidebar";
 import Head from "next/head";
 
@@ -11,10 +12,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        {/* <Sidebar /> */}
+      <main >
         <HeroCard />
-        {/* <p>Hellloooooooooooooooooooooooo</p> */}
+        <Games />
       </main>
     </>
   );
