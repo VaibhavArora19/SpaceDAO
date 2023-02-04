@@ -104,12 +104,12 @@ const Sidebar = () => {
                 !openMenu && "opacity-0 translate-x-28 overflow-hidden"
               }`}
             >
-              {link.name}
+              {link.name}``
             </p>
             <p
               className={`${
                 openMenu && "hidden"
-              } absolute left-48 bg-white font-semibold whitespace-pre w-0 text-gray-900 rounded-md drop-shadow-lg p-0  overflow-hidden group-hover:scale-110 group-hover:left-20 group-hover:duration-300 group-hover:w-fit group-hover:px-2 group-hover:py-1`}
+              } absolute left-48 z-10 bg-white font-semibold whitespace-pre w-0 text-gray-900 rounded-md drop-shadow-lg shadow-xl p-0  overflow-hidden group-hover:scale-110 group-hover:left-20 group-hover:duration-300 group-hover:w-fit group-hover:px-2 group-hover:py-1`}
             >
               {link.name}
             </p>
