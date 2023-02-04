@@ -58,7 +58,8 @@ contract Store {
         bool _private,
         uint256 _price,
         uint _fundingPeriod,
-        uint size
+        uint size,
+        uint totalFunding
     ) external {
         data.push(
             metadata(
@@ -71,7 +72,8 @@ contract Store {
                 _private,
                 msg.sender,
                 _fundingPeriod,
-                size
+                size,
+                0
             )
         );
         dataById[id] = data[id];
@@ -88,8 +90,9 @@ contract Store {
         return dataById[_id];
     }
 
-    function supportData(uint256 _id) external {
+    function supportData(uint256 _id) external payable{
         //need to add the payment details here
+        dataById[_id].totalFunding += msg.value;
         supportersOfDataId[_id].push(msg.sender);
     }
 
@@ -135,9 +138,9 @@ contract Store {
         require(_id < id, "Wrong data id!");
 
         if(dealDataById[_id].size == dataById[_id].size) {
-            /**
-            * @dev send the bounty to bounty hunter here
-            */
+            uint totalAmount = dataById[_id].totalFunding + 0.1 ether;
+            (bool sent, ) = payable(msg.sender).call{value: totalAmount}("");
+            require(sent, "Failed to send Ether");
             return true;
         }
     }
