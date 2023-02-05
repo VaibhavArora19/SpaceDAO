@@ -37,11 +37,14 @@ export const WalletProvider = ({ children }) => {
     }
   };
 
+//   useEffect(() => {
+//     checkIfWalletIsConnected();
+//   }, []);
+
   return (
     <WalletContext.Provider
       value={{
         connectWallet,
-        checkIfWalletIsConnected,
         currentAccount,
       }}
     >

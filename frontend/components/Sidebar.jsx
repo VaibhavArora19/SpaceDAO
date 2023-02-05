@@ -1,15 +1,21 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { MdDashboard } from "react-icons/md";
 import { FaBook, FaGamepad } from "react-icons/fa";
-import { BsMusicNoteBeamed, BsPeopleFill } from "react-icons/bs";
+import {
+  BsMusicNoteBeamed,
+  BsPeopleFill,
+  BsPencilSquare,
+} from "react-icons/bs";
 import { AiOutlineCodeSandbox, AiFillTrophy } from "react-icons/ai";
 import { FiDownloadCloud } from "react-icons/fi";
 import { IoMdSettings } from "react-icons/io";
 import { IoExitOutline } from "react-icons/io5";
+import { accountShortner } from "@/utils/accountShortner";
 
 import Image from "next/image";
+import { WalletContext } from "../context/WalletContext";
 
 const links = [
   {
@@ -55,9 +61,9 @@ const links = [
     line: true,
   },
   {
-    name: "Downloads",
-    icon: <FiDownloadCloud size={20} />,
-    link: "/",
+    name: "Register",
+    icon: <BsPencilSquare size={20} />,
+    link: "/register",
   },
   {
     name: "Settings",
@@ -68,6 +74,7 @@ const links = [
 
 const Sidebar = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  // const { currentAccount } = useContext(WalletContext);
 
   return (
     <div
@@ -127,7 +134,11 @@ const Sidebar = () => {
           width={40}
           className="rounded-md mr-2"
         />
-        <p className={`${!openMenu && "hidden"} text-lg `}>Aman Mandal</p>
+        <p className={`${!openMenu && "hidden"} text-lg `}>
+          {/* Kindly fix this please! */}
+          {/* {currentAccount ? accountShortner(currentAccount) : "--"} */}
+          Aman Mandal
+        </p>
         <div className={`${!openMenu && "hidden"} ml-10`}>
           <IoExitOutline size={20} />
         </div>

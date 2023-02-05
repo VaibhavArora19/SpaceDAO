@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const codes = () => {
-  return (
-    <div>codes</div>
-  )
-}
+  return <>Codes</>;
+};
 
-export default codes
+export default codes;
