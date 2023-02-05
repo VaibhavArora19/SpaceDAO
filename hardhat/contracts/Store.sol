@@ -16,8 +16,12 @@ contract Store {
         string cid;
         string supportable;
         bool _private;
+        bool forSale;
         address owner;
         uint fundingPeriod;
+        uint size;
+        uint totalFunding;
+        uint index;
     }
 
     /**
@@ -35,8 +39,6 @@ contract Store {
         int64 endTerm;
         int64 activated;
         int64 terminated;
-        uint size;
-
     }
 
     // to get to frontend
@@ -58,8 +60,7 @@ contract Store {
         bool _private,
         uint256 _price,
         uint _fundingPeriod,
-        uint size,
-        uint totalFunding
+        uint size
     ) external {
         data.push(
             metadata(
@@ -70,10 +71,12 @@ contract Store {
                 _cid,
                 _supportable,
                 _private,
+                true,
                 msg.sender,
                 _fundingPeriod,
                 size,
-                0
+                0,
+                ownerData[msg.sender].length
             )
         );
         dataById[id] = data[id];
@@ -84,6 +87,13 @@ contract Store {
     function buyData(uint256 _id) external payable {
         require(msg.value == dataById[_id].price, "Not enough money");
         //need to add the payment details here based on filecoin prices
+        dataById[_id].forSale = false;
+        (bool sent, ) = payable(dataById[_id].owner).call{value: msg.value}("");
+        require(sent, "Failed to send Ether");
+        delete ownerData[dataById[_id].owner][dataById[_id].index];
+        dataById[_id].owner = msg.sender;
+        ownerData[msg.sender].push(dataById[_id]);
+        ownerData[msg.sender][ownerData[msg.sender].length - 1].index = ownerData[msg.sender].length - 1;
     }
 
     function getDataById(uint256 _id) external view returns (metadata memory) {
@@ -91,7 +101,7 @@ contract Store {
     }
 
     function supportData(uint256 _id) external payable{
-        //need to add the payment details here
+        require(msg.value > 0.1 ether, "Not enough FIL");
         dataById[_id].totalFunding += msg.value;
         supportersOfDataId[_id].push(msg.sender);
     }
@@ -132,9 +142,8 @@ contract Store {
      * @dev this function is called by bounty hunter to claim his bounty
      * @dev this function should be called after calling registerDeal function
      * @param _id of the data
-     * @param dealId to verify the data has been uploaded or not on-chain 
      */
-    function verifyClaim(uint _id, uint dealId) public view returns (bool){
+    function verifyClaim(uint _id) public returns (bool){
         require(_id < id, "Wrong data id!");
 
         if(dealDataById[_id].size == dataById[_id].size) {
@@ -143,6 +152,8 @@ contract Store {
             require(sent, "Failed to send Ether");
             return true;
         }
+
+        return false;
     }
 
 

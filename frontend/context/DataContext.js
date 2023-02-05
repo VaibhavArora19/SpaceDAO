@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { useContract, useSigner } from "wagmi";
 import { ethers } from "ethers";
+import { contractAddress, contractABI } from "@/constants";
 import Web3Modal from "web3modal";
 
 export const AppContext = createContext();
@@ -8,12 +9,12 @@ export const AppContext = createContext();
 const AppWrapper = (props) => {
   const [dataById, setDataById] = useState({});
   const [ownerData, setOwnerData] = useState({});
-//   const { data: signer } = useSigner();
+  const { data: signer } = useSigner();
 
   const contract = useContract({
-    address: "", //contract Address
-    abi: "", //contract ABI
-    // signerOrProvider: signer,
+    address: contractAddress, //contract Address
+    abi: contractABI, //contract ABI
+    signerOrProvider: signer,
   });
 
   const storeDataHandler = async (data) => {
@@ -64,8 +65,6 @@ const AppWrapper = (props) => {
     return supporters;
   };
 
-  
-
   const sharedState = {
     storeDataHandler,
     registerDealHandler,
@@ -77,7 +76,6 @@ const AppWrapper = (props) => {
     getOwnerData,
     ownerData,
     getSupporters,
-
   };
 
   return (
