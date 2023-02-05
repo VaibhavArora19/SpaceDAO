@@ -1483,7 +1483,7 @@
     "abitype" "^0.3.0"
     "eventemitter3" "^4.0.7"
 
-"@wagmi/core@>=0.9.x", "@wagmi/core@0.9.4":
+"@wagmi/core@>=0.9", "@wagmi/core@>=0.9.x", "@wagmi/core@0.9.4":
   "integrity" "sha512-YUOS1xn2PfKo0c90J708Vd+OPM5GoOouWExL/ZyuDP05f7y3PwDbN5ZfCyiqyTWsO53mMXcajMTFyjDqLxXACg=="
   "resolved" "https://registry.npmjs.org/@wagmi/core/-/core-0.9.4.tgz"
   "version" "0.9.4"
@@ -1884,6 +1884,19 @@
   dependencies:
     "buffer" "6.0.3"
     "valtio" "1.9.0"
+
+"@web3modal/ethereum@^2.1.1":
+  "integrity" "sha512-F5kqPtqOgYt+1S7lZd8nfD59x1+YUkqvhbJrnSMg1uxDPSBtOGnSX33XVTQ7m3Z2/3yeoFkeLipx4i4WVLdAFA=="
+  "resolved" "https://registry.npmjs.org/@web3modal/ethereum/-/ethereum-2.1.1.tgz"
+  "version" "2.1.1"
+
+"@web3modal/react@^2.1.1":
+  "integrity" "sha512-lij4OxfL8jCmgjQIrqXzNwGXEfXHr6ext/2+MwA12+2TO4SOOtbvkBmmvicHmV7EEo43fCAqyrk6vDhsXZ00Ag=="
+  "resolved" "https://registry.npmjs.org/@web3modal/react/-/react-2.1.1.tgz"
+  "version" "2.1.1"
+  dependencies:
+    "@web3modal/core" "2.1.1"
+    "@web3modal/ui" "2.1.1"
 
 "@web3modal/standalone@^2.0.0":
   "integrity" "sha512-K06VkZqltLIBKpnLeM2oszRDSdLnwXJWCcItWEOkH4LDFQIiq8lSeLhcamuadRxRKF4ZyTSLHHJ5MFcMfZEHQQ=="
@@ -3614,7 +3627,7 @@
     "ethjs-util" "0.1.6"
     "rlp" "^2.2.3"
 
-"ethers@^5.5.2", "ethers@^5.7.2", "ethers@>=5.5.1 <6":
+"ethers@^5.5.2", "ethers@^5.7.2", "ethers@>=5.5.1 <6", "ethers@>=5.7":
   "integrity" "sha512-wswUsmWo1aOK8rR7DIKiWSw9DbLWe6x98Jrn8wcTflTVvaXhAMaB5zGAXy0GYQEQp9iO1iSHWVyARQm11zUtyg=="
   "resolved" "https://registry.npmjs.org/ethers/-/ethers-5.7.2.tgz"
   "version" "5.7.2"
@@ -5732,7 +5745,7 @@
     "minimist" "^1.2.0"
     "strip-json-comments" "~2.0.1"
 
-"react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@^18.2.0", "react-dom@>= 16.8.0", "react-dom@18.2.0":
+"react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", "react-dom@^18.2.0", "react-dom@>= 16.8.0", "react-dom@>=17", "react-dom@18.2.0":
   "integrity" "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   "version" "18.2.0"
@@ -5776,7 +5789,7 @@
     "prop-types" "^15.5.8"
     "react-easy-swipe" "^0.0.21"
 
-"react@*", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18.2.0", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.8", "react@>=17.0.0", "react@18.2.0":
+"react@*", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18.2.0", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", "react@>=16.8", "react@>=17", "react@>=17.0.0", "react@18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"

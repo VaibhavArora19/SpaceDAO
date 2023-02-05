@@ -1,6 +1,6 @@
 import { AppContext } from "@/context/DataContext";
 import { WalletContext } from "@/context/WalletContext";
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 const Backdrop = () => {
   return (
@@ -10,6 +10,16 @@ const Backdrop = () => {
 
 const WalletModal = () => {
   const { connectWallet } = useContext(WalletContext);
+
+  const [hasMounted, setHasMounted] = useState(false);
+
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return null;
+  }
 
   return (
     <>
