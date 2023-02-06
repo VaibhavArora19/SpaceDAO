@@ -1,6 +1,6 @@
 export const FilecoinMarketConsumer =
   "0xBbb4a0CC1b52EeaAfb52a5F3E15892837e20A4e2";
-export const contractAddress = "0xbb3973cb3cA0fa98177EB4fE615B4CD1ad666180";
+export const contractAddress = "0xC9CEECF6e132fE77F59Dba701dd06744F0369B36";
 export const contractABI = [
   {
     inputs: [
@@ -51,9 +51,9 @@ export const contractABI = [
         type: "string",
       },
       {
-        internalType: "string",
+        internalType: "bool",
         name: "_supportable",
-        type: "string",
+        type: "bool",
       },
       {
         internalType: "bool",
@@ -157,9 +157,9 @@ export const contractABI = [
         type: "string",
       },
       {
-        internalType: "string",
+        internalType: "bool",
         name: "supportable",
-        type: "string",
+        type: "bool",
       },
       {
         internalType: "bool",
@@ -236,9 +236,9 @@ export const contractABI = [
         type: "string",
       },
       {
-        internalType: "string",
+        internalType: "bool",
         name: "supportable",
-        type: "string",
+        type: "bool",
       },
       {
         internalType: "bool",
@@ -381,9 +381,9 @@ export const contractABI = [
             type: "string",
           },
           {
-            internalType: "string",
+            internalType: "bool",
             name: "supportable",
-            type: "string",
+            type: "bool",
           },
           {
             internalType: "bool",
@@ -483,9 +483,9 @@ export const contractABI = [
         type: "string",
       },
       {
-        internalType: "string",
+        internalType: "bool",
         name: "supportable",
-        type: "string",
+        type: "bool",
       },
       {
         internalType: "bool",

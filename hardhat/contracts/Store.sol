@@ -14,7 +14,7 @@ contract Store {
         string name;
         string property;
         string cid;
-        string supportable;
+        bool supportable;
         bool _private;
         bool forSale;
         address owner;
@@ -56,7 +56,7 @@ contract Store {
         string memory _name,
         string memory _property,
         string memory _cid,
-        string memory _supportable,
+        bool _supportable,
         bool _private,
         uint256 _price,
         uint _fundingPeriod,
@@ -102,6 +102,8 @@ contract Store {
 
     function supportData(uint256 _id) external payable{
         require(msg.value > 0.1 ether, "Not enough FIL");
+        require(dataById[_id].supportable, "Data is not supportable!");
+        require(dataById[_id].fundingPeriod > block.timestamp, "Funding period is over!");
         dataById[_id].totalFunding += msg.value;
         supportersOfDataId[_id].push(msg.sender);
     }
@@ -135,7 +137,6 @@ contract Store {
             );
 
         dealDataById[_id] = newDeal;
-
     }
 
     /**

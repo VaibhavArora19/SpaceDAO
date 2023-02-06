@@ -3,13 +3,25 @@ import useInput from "@/hooks/useInput";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import { useSigner, useContract } from "wagmi";
+import { contractAddress, contractABI } from "@/constants";
+import { upload } from "../lighthouse/index";
 
 const register = () => {
   const [thumbnail, setThumbnail] = useState(null);
   const [uploadedFile, setUploadedFile] = useState(null);
   const [selectedType, setSelectedType] = useState("Game");
   const [openModal, setOpenModal] = useState(false);
+  const [cid, setCid] = useState("");
   const router = useRouter();
+
+  const { data: signer } = useSigner();
+
+  const contract = useContract({
+    address: contractAddress, //contract Address
+    abi: contractABI, //contract ABI
+    signerOrProvider: signer,
+  });
 
   const thumbnailTypes = ["image/png", "image/jpeg", "image/jpg"];
 
@@ -69,7 +81,7 @@ const register = () => {
     setOpenModal(false);
   };
 
-  const submitFormHandler = (event) => {
+  const submitFormHandler = async (event) => {
     event.preventDefault();
 
     let formIsValid = false;
@@ -90,6 +102,37 @@ const register = () => {
       !enteredPriceIsValid
     ) {
       return alert("Fill the whole form");
+    }
+
+    try {
+      const thumbnailUrl = await upload(thumbnail);
+      console.log(thumbnailUrl, "thumbnailUrl");
+      const dataUrl = await upload(uploadedFile);
+      console.log(dataUrl, "dataUrl");
+      let data = {};
+      data.name = enteredName;
+      data.description = enteredDescription;
+      data.price = enteredPrice;
+      data.thumbnail = thumbnailUrl;
+      data.data = dataUrl;
+      data.type = selectedType;
+      const cid = await upload(data);
+      console.log(cid, "cid");
+      //need to add size of file
+      const size = 0;
+      const tx = await contract.storeData(
+        enteredName,
+        selectedType,
+        cid,
+        true,
+        false,
+        ethers.utils.parseEther(enteredPrice.toString()),
+        Math.floor(Date.now() / 1000) + 5 * 24 * 60 * 60,
+        size
+      );
+      await tx.wait();
+    } catch (err) {
+      console.log(err, "data register error");
     }
 
     setOpenModal(true);
